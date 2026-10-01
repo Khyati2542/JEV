@@ -1,0 +1,387 @@
+{
+  "schema_version": 1,
+  "categories": ["Billing", "Technical", "Account", "Security", "Other"],
+  "notes": "The `reason` field is ground-truth annotation metadata for benchmarking and error analysis only. It is never included in any prompt sent to a model.",
+  "tickets": [
+    {
+      "id": "T001",
+      "text": "Could you send me the invoice for September? My accounting team needs a copy for our records before they close the month.",
+      "category": "Billing",
+      "difficulty": "easy",
+      "reason": "Direct request for an invoice document with no competing signals."
+    },
+    {
+      "id": "T002",
+      "text": "The Android app crashes immediately every time I open the Reports screen. Pixel 8, Android 14, app version 4.2.1. Every other screen is fine.",
+      "category": "Technical",
+      "difficulty": "easy",
+      "reason": "Reproducible application crash with version and device details; unambiguous product defect."
+    },
+    {
+      "id": "T003",
+      "text": "I want to change the email address associated with my profile but the settings page doesn't let me save the new address.",
+      "category": "Account",
+      "difficulty": "easy",
+      "reason": "Profile field the user is trying to change themselves; standard account management request."
+    },
+    {
+      "id": "T004",
+      "text": "Do you have an office in Bangalore, and what are your working hours?",
+      "category": "Other",
+      "difficulty": "easy",
+      "reason": "General company enquiry that fits none of the four operational categories."
+    },
+    {
+      "id": "T005",
+      "text": "The invoice says I owe $499, but the pricing page says my plan should cost $199.",
+      "category": "Billing",
+      "difficulty": "easy",
+      "reason": "Explicit dispute between an invoiced amount and the advertised price."
+    },
+    {
+      "id": "T006",
+      "text": "Someone is posting from my account. I am certain it has been compromised. Please lock it immediately.",
+      "category": "Security",
+      "difficulty": "easy",
+      "reason": "Explicit, unambiguous report of account compromise."
+    },
+    {
+      "id": "T007",
+      "text": "CSV exports complete and the download starts, but the file that lands on my machine is 0 bytes. Happens on both Chrome and Firefox.",
+      "category": "Technical",
+      "difficulty": "easy",
+      "reason": "Export feature produces a corrupt file across browsers; a product defect."
+    },
+    {
+      "id": "T008",
+      "text": "Please rename my organisation from 'Acme Test' to 'Acme Technologies Pvt Ltd'.",
+      "category": "Account",
+      "difficulty": "easy",
+      "reason": "Pure organisation profile edit with no payment or access dimension."
+    },
+    {
+      "id": "T009",
+      "text": "Are you hiring backend engineers? I could not find a careers page on your site.",
+      "category": "Other",
+      "difficulty": "easy",
+      "reason": "Recruitment enquiry from a non-customer; outside the support taxonomy."
+    },
+    {
+      "id": "T010",
+      "text": "Can you re-issue my last receipt with my company's GST number printed on it?",
+      "category": "Billing",
+      "difficulty": "easy",
+      "reason": "Request to amend a financial document; clearly billing."
+    },
+    {
+      "id": "T011",
+      "text": "Your status page says all systems operational, but webhooks have not been delivered to our endpoint for the last two hours. Our endpoint is up and responding 200 to manual test posts.",
+      "category": "Technical",
+      "difficulty": "easy",
+      "reason": "Delivery pipeline failure that the user has already isolated to the platform side."
+    },
+
+    {
+      "id": "T012",
+      "text": "I tried upgrading my subscription three times. The payment confirmation came through from my bank, but the application still shows my old plan. I refreshed the page and logged out twice.",
+      "category": "Billing",
+      "difficulty": "medium",
+      "reason": "Troubleshooting steps and a stale UI suggest Technical, but money has moved without the entitlement being applied, which is a billing reconciliation problem. Technical should retain meaningful probability."
+    },
+    {
+      "id": "T013",
+      "text": "I can log in successfully from my phone, but whenever I try to access the dashboard from my laptop it keeps redirecting me to the login screen.",
+      "category": "Technical",
+      "difficulty": "medium",
+      "reason": "Credentials are proven valid on one device, so this is a session or client-side defect rather than an account problem."
+    },
+    {
+      "id": "T014",
+      "text": "I noticed that the amount leaving my bank account doesn't match what I expected to pay for this month.",
+      "category": "Billing",
+      "difficulty": "medium",
+      "reason": "Indirect wording with no billing vocabulary beyond 'bank account' and 'pay', but it is a charge-amount discrepancy."
+    },
+    {
+      "id": "T015",
+      "text": "Everything was working yesterday. Today the API returns 401 for every request even though the same access token worked yesterday.",
+      "category": "Technical",
+      "difficulty": "medium",
+      "reason": "A 401 status code reads as an access or security issue, but an unchanged token failing across all requests points to a platform-side auth defect."
+    },
+    {
+      "id": "T016",
+      "text": "I received three login notifications from devices I don't recognize, but I can still access the account normally.",
+      "category": "Security",
+      "difficulty": "medium",
+      "reason": "The user has not lost access, which pulls toward Account, but unrecognised device logins are a security incident regardless."
+    },
+    {
+      "id": "T017",
+      "text": "My dashboard is working perfectly and my password is fine. The only issue is that my invoice contains the wrong amount.",
+      "category": "Billing",
+      "difficulty": "medium",
+      "reason": "Deliberately misleading context: Technical and Security signals are present but explicitly negated by the user."
+    },
+    {
+      "id": "T018",
+      "text": "We hired two new analysts last week. I added them both in the admin panel and they received the invitation emails, but neither of them appears in the member list.",
+      "category": "Account",
+      "difficulty": "medium",
+      "reason": "Could be read as a Technical defect in the admin panel, but the subject matter is membership provisioning."
+    },
+    {
+      "id": "T019",
+      "text": "A former contractor's API key still works even though I removed them from the workspace three weeks ago.",
+      "category": "Security",
+      "difficulty": "medium",
+      "reason": "Looks like a membership or Account question, but a revoked user retaining working credentials is an access-control failure."
+    },
+    {
+      "id": "T020",
+      "text": "Can you point me at documentation on how your data retention policy works? I'm filling in a vendor questionnaire for our procurement team.",
+      "category": "Other",
+      "difficulty": "medium",
+      "reason": "Security vocabulary ('retention policy', 'vendor questionnaire') but it is a documentation request, not an incident or account action."
+    },
+    {
+      "id": "T021",
+      "text": "Search returns results from last month but nothing from this week. The records definitely exist because I can open them from a direct link.",
+      "category": "Technical",
+      "difficulty": "medium",
+      "reason": "Indexing lag isolated by the user's own test; clearly a product defect."
+    },
+    {
+      "id": "T022",
+      "text": "We moved from monthly to annual billing in July. The annual invoice was raised and paid, but the monthly charge also went out in August.",
+      "category": "Billing",
+      "difficulty": "medium",
+      "reason": "Double-charge caused by a plan change; squarely billing despite the plan-configuration element."
+    },
+    {
+      "id": "T023",
+      "text": "I am the only admin on this workspace and I'm leaving the company on Friday. How do I hand admin rights to my colleague?",
+      "category": "Account",
+      "difficulty": "medium",
+      "reason": "Privilege transfer sounds security-adjacent, but it is a routine, authorised ownership change."
+    },
+    {
+      "id": "T024",
+      "text": "I pasted our production API key into a public GitHub gist by mistake. I've deleted the gist. What should I do now?",
+      "category": "Security",
+      "difficulty": "medium",
+      "reason": "Credential exposure requiring rotation; the deletion of the gist does not remove the exposure."
+    },
+    {
+      "id": "T025",
+      "text": "The dashboard loads but every chart shows 'no data'. Our ingestion job reports success and the raw events endpoint returns rows when I query it directly.",
+      "category": "Technical",
+      "difficulty": "medium",
+      "reason": "User has already proven data exists; the failure is in the aggregation or rendering layer."
+    },
+    {
+      "id": "T026",
+      "text": "My colleague left the company and I need to transfer ownership of the 42 reports she created over to me.",
+      "category": "Account",
+      "difficulty": "medium",
+      "reason": "Asset ownership reassignment following an offboarding; account administration."
+    },
+    {
+      "id": "T027",
+      "text": "Do you have a public roadmap? We would like to know whether SSO is planned for this year before we renew.",
+      "category": "Other",
+      "difficulty": "medium",
+      "reason": "Mentions SSO and renewal, pulling toward Security and Billing, but the actual ask is for roadmap information."
+    },
+    {
+      "id": "T028",
+      "text": "Our card expired and the renewal payment failed. I've since updated the card details, but the account still shows 'payment overdue' two days later.",
+      "category": "Billing",
+      "difficulty": "medium",
+      "reason": "Failed renewal and stale payment state; the stale banner is a billing-state issue rather than a UI defect."
+    },
+    {
+      "id": "T029",
+      "text": "Uploads above roughly 40 MB fail with a generic 'something went wrong'. Smaller files upload fine on the same connection.",
+      "category": "Technical",
+      "difficulty": "medium",
+      "reason": "Size-correlated failure; a clear platform limit or defect."
+    },
+    {
+      "id": "T030",
+      "text": "I originally signed up using Google, but my company has now disabled Google sign-in for everyone. Can I switch my login to an email and password instead?",
+      "category": "Account",
+      "difficulty": "medium",
+      "reason": "Authentication method change could read as Security or Technical, but it is a voluntary, authorised identity configuration change."
+    },
+    {
+      "id": "T031",
+      "text": "If I type your domain without https, the login page is served over plain HTTP. Shouldn't that redirect automatically?",
+      "category": "Security",
+      "difficulty": "medium",
+      "reason": "Reported as a web defect, but a credential page served without TLS is a security weakness. Technical should retain meaningful probability."
+    },
+    {
+      "id": "T032",
+      "text": "We'd like to write a case study about how our team uses your product. Who should I talk to about that?",
+      "category": "Other",
+      "difficulty": "medium",
+      "reason": "Marketing and partnership request outside the operational support taxonomy."
+    },
+    {
+      "id": "T033",
+      "text": "Timestamps in the exported report are four and a half hours behind what the dashboard shows. We are in IST and the workspace timezone is set correctly.",
+      "category": "Technical",
+      "difficulty": "medium",
+      "reason": "Timezone offset bug in the export path; the user has already ruled out the workspace setting."
+    },
+    {
+      "id": "T034",
+      "text": "I cancelled my subscription in June, but I have been charged in July, August and September.",
+      "category": "Billing",
+      "difficulty": "medium",
+      "reason": "Cancellation is an account action, but the harm and the request are about charges taken after it."
+    },
+
+    {
+      "id": "T035",
+      "text": "My card was charged successfully, but after I changed the email associated with my account the subscription disappeared and the dashboard is asking me to subscribe again.",
+      "category": "Billing",
+      "difficulty": "hard",
+      "reason": "An account change triggered the symptom, but the unresolved harm is a paid subscription that is no longer attached to the customer. Account should retain meaningful probability."
+    },
+    {
+      "id": "T036",
+      "text": "I can't log into my account anymore. I received a password reset email that I didn't request, and then I noticed that my profile email had changed.",
+      "category": "Security",
+      "difficulty": "hard",
+      "reason": "Presents as a login/Account problem, but an unrequested reset plus a changed profile email is account takeover."
+    },
+    {
+      "id": "T037",
+      "text": "I don't recognize the subscription charge on my card. I checked my account and there is a new subscription that I don't remember purchasing.",
+      "category": "Security",
+      "difficulty": "hard",
+      "reason": "Surface vocabulary is entirely billing, but an unrecognised subscription created on the account indicates unauthorised access. Billing should retain meaningful probability."
+    },
+    {
+      "id": "T038",
+      "text": "I was charged twice this month, and while trying to fix it I also realized I can no longer change my password.",
+      "category": "Billing",
+      "difficulty": "hard",
+      "reason": "Multi-intent. The duplicate charge is the primary, higher-impact issue; the password-change failure is secondary and should retain probability under Account."
+    },
+    {
+      "id": "T039",
+      "text": "Something strange happened with my account after yesterday's login.",
+      "category": "Security",
+      "difficulty": "hard",
+      "reason": "Deliberately vague. 'Something strange' following a login is most consistent with a security concern, but the message carries almost no signal and is a legitimate candidate for human review."
+    },
+    {
+      "id": "T040",
+      "text": "I was unable to log in after changing my password yesterday. I also noticed an unfamiliar login notification and an email saying my recovery address had been updated.",
+      "category": "Security",
+      "difficulty": "hard",
+      "reason": "Although account access is affected, the unfamiliar login and recovery-address change indicate a security incident."
+    },
+    {
+      "id": "T041",
+      "text": "Apologies for the long message. We have been a customer since 2021 and this is the first time I have had to write in. Back in March we moved the team from Starter to Growth because we needed extra seats for the new analytics group, and at the time your sales rep mentioned the seat count would be pro-rated. In July two people left and I removed them from the workspace the same week. I also raised a ticket about the dashboard being slow around then, which your team fixed, and it has been fine since. The thing I am writing about now is that the invoice we received on the 1st still lists eleven seats. The admin panel clearly shows nine members. I have attached a screenshot of the member list and the PDF invoice. Our finance team cannot process the payment until the seat count matches.",
+      "category": "Billing",
+      "difficulty": "hard",
+      "reason": "Long message containing a resolved performance issue and a completed membership action as noise; the single open request is an invoice whose seat count is wrong."
+    },
+    {
+      "id": "T042",
+      "text": "Let me give you the full timeline. On Tuesday evening I rotated our API credentials as part of our quarterly policy. Nothing unusual, no incident, we just do it every quarter. Wednesday morning everything was fine. Wednesday afternoon our nightly sync started failing, so I assumed the new key was wrong and generated another one. Same result. I then checked whether my own login was affected and it was not. I can sign in, see the dashboard, and see the keys listed. I had our DevOps engineer try from a different network and he gets the same failure. The response is a 502 with an empty body, not a 401, and it only happens on the /v2/batch endpoint. Every other endpoint works with the same key.",
+      "category": "Technical",
+      "difficulty": "hard",
+      "reason": "Credential rotation and key regeneration create strong Security and Account signals, but authentication demonstrably succeeds and the failure is a 502 isolated to one endpoint."
+    },
+    {
+      "id": "T043",
+      "text": "I have two logins with you. One uses my work email from when I joined, and one uses my personal email from a trial I started last year. Over time most of my projects ended up on the personal one. I would like everything consolidated under the work email. I am not asking for a refund and nothing is broken, I just need the two merged.",
+      "category": "Account",
+      "difficulty": "hard",
+      "reason": "Mentions a trial and pre-emptively disclaims a refund, which pulls toward Billing, but the request is purely identity consolidation."
+    },
+    {
+      "id": "T044",
+      "text": "I am a final-year student writing my dissertation on how SaaS companies handle incident communication. Would someone from your engineering team be willing to do a 30-minute interview? I am happy to sign an NDA. I am not a customer myself, though my university has a licence through the computer science department.",
+      "category": "Other",
+      "difficulty": "hard",
+      "reason": "Contains incident, NDA and licence vocabulary, but it is an interview request that fits none of the four operational categories. A good test of whether the Other option is used correctly."
+    },
+    {
+      "id": "T045",
+      "text": "Our customers are reporting that the checkout widget sometimes shows 'session expired' and sends them back to the start. It only happens on Safari and only for people who have been idle for more than ten minutes. Our own staff accounts are fine. I don't think anyone is actually being locked out of their account, the session just doesn't survive.",
+      "category": "Technical",
+      "difficulty": "hard",
+      "reason": "Session-expiry and lockout language resembles Account or Security, but the behaviour is browser-specific and reproducible, i.e. a product defect."
+    },
+    {
+      "id": "T046",
+      "text": "Someone on my team deleted the 'Finance' workspace on Thursday. I know who did it and it was a genuine accident, there is nothing suspicious about it. Can it be restored? Also, are we still paying for it in the meantime?",
+      "category": "Account",
+      "difficulty": "hard",
+      "reason": "Explicitly rules out a security incident and appends a secondary billing question; the primary request is workspace restoration."
+    },
+    {
+      "id": "T047",
+      "text": "We are being billed in USD but our contract and purchase order are in INR. Finance says the amount that actually hit the account is about 3% higher than the PO because of the conversion, and procurement will not approve it. Nobody has done anything wrong here, I just need the invoice reissued in the contracted currency.",
+      "category": "Billing",
+      "difficulty": "hard",
+      "reason": "Contract and procurement framing could read as Other, but the concrete ask is a reissued invoice in the correct currency."
+    },
+    {
+      "id": "T048",
+      "text": "My manager asked me to look into why our audit log shows eleven exports of the customer table last weekend. Three of those are mine. The other eight are attributed to a service account we created for the reporting tool, but the reporting tool was switched off for maintenance all weekend.",
+      "category": "Security",
+      "difficulty": "hard",
+      "reason": "Framed as an audit-log question about an integration, but exports attributed to a service account while that service was offline indicate possible credential misuse."
+    },
+    {
+      "id": "T049",
+      "text": "We are being acquired and our legal team needs to know whether our agreement with you survives a change of control, and who the change-of-control notice should be sent to. Nothing is wrong with the product and all our invoices are paid up to date.",
+      "category": "Other",
+      "difficulty": "hard",
+      "reason": "Contractual and legal question that explicitly excludes billing and product issues and is not account administration."
+    },
+    {
+      "id": "T050",
+      "text": "Two of our users say they occasionally see another customer's company name in the top-left corner after switching workspaces. Refreshing the page fixes it and the underlying records always belong to us. I need to know urgently whether this means our data is leaking.",
+      "category": "Technical",
+      "difficulty": "hard",
+      "reason": "The user frames it as a possible data leak, but stale UI state cleared by a refresh is a front-end caching defect. Security should retain substantial probability here, and this is a reasonable case to route to human review."
+    },
+    {
+      "id": "T051",
+      "text": "I keep getting 'you do not have permission to view this report' even though I am listed as an admin. My colleague with the same role can open it without any problem. I have cleared my cache and tried an incognito window.",
+      "category": "Account",
+      "difficulty": "hard",
+      "reason": "Browser troubleshooting suggests Technical, but two users with the same nominal role behaving differently points to the permission assignment on the account. Technical should retain meaningful probability."
+    },
+    {
+      "id": "T052",
+      "text": "We downgraded from Enterprise to Growth at renewal. Since then SSO has stopped working, which I understand is expected because it is an Enterprise-only feature. But we were still invoiced at the Enterprise rate for the first month after the downgrade.",
+      "category": "Billing",
+      "difficulty": "hard",
+      "reason": "Contains a real technical symptom that the user has already explained away themselves; the open issue is the incorrect invoice rate."
+    },
+    {
+      "id": "T053",
+      "text": "Honestly I am at the end of my patience with this. Third time this week. I log in, the page sits on a spinner for about forty seconds, and then about half the time it dumps me back to the login screen. My password is definitely correct, I reset it twice just to be sure, and I have had no suspicious emails. Two colleagues on the same office network see exactly the same thing. It works fine from my phone on mobile data.",
+      "category": "Technical",
+      "difficulty": "hard",
+      "reason": "Emotional tone, repeated password resets and login failures suggest Account or Security, but the network-correlated pattern and successful mobile access point to an infrastructure or front-end problem."
+    },
+    {
+      "id": "T054",
+      "text": "Quick one. The invoice email you send out still has our old company logo on it. The amounts are all correct and the payment went through fine. Is there somewhere I can update the branding that appears on billing documents?",
+      "category": "Account",
+      "difficulty": "hard",
+      "reason": "Dense billing vocabulary, but the invoice itself is explicitly correct; the request is to change an organisation branding setting. Billing should retain meaningful probability."
+    }
+  ]
+}

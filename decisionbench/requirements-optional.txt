@@ -1,0 +1,10 @@
+# Optional extras. The app runs fully without these.
+#
+# transformers lets the backend
+#   (a) resolve the single-token ids for A/B/C/D/E so the Jev-style engine can
+#       call SGLang's /v1/score directly, and
+#   (b) apply the model's own chat template instead of hand-built Qwen ChatML.
+#
+# If you already installed SGLang, transformers is almost certainly present in
+# that environment already.
+transformers>=4.40

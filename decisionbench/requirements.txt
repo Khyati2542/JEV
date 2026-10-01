@@ -1,0 +1,16 @@
+# DecisionBench backend - core dependencies.
+# Everything here is free and open source. No API keys, no paid services.
+fastapi>=0.110,<1.0
+uvicorn[standard]>=0.27,<1.0
+httpx>=0.27,<1.0
+pydantic>=2.6,<3.0
+python-dotenv>=1.0,<2.0
+
+# Classifier baseline (small, pure-Python wheels). If this is not installed the
+# classifier engine falls back to a labelled keyword heuristic.
+scikit-learn>=1.4,<2.0
+
+# Optional, see requirements-optional.txt:
+#   transformers  -> resolves single-token label ids so the Jev-style engine can
+#                    use SGLang /v1/score. Without it the engine falls back to
+#                    next-token logprobs, which also works.

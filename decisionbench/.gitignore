@@ -1,0 +1,20 @@
+# Python
+__pycache__/
+*.py[cod]
+.venv/
+venv/
+.env
+
+# Node
+node_modules/
+frontend/dist/
+
+# Benchmark run logs (regenerated on every run)
+runs/*.jsonl
+runs/*.json
+
+# OS / editor
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/

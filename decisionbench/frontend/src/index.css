@@ -1,0 +1,199 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* ---------------------------------------------------------------------------
+   Design tokens.
+
+   The four categorical series colours are the validated default palette, in
+   slot order, assigned to the four methods in the order they are always
+   rendered (normal, structured, jev, classifier). Screen adjacency therefore
+   matches the pair list the palette was validated against.
+
+   The hue identifies the METHOD, never its rank. Bars are always drawn in the
+   fixed method order and never sorted by value - this dashboard does not
+   declare a winner.
+--------------------------------------------------------------------------- */
+:root {
+  color-scheme: light;
+
+  --page: #f9f9f7;
+  --surface-1: #fcfcfb;
+  --surface-2: #f3f3f0;
+
+  --text-primary: #0b0b0b;
+  --text-secondary: #52514e;
+  --muted: #898781;
+
+  --grid: #e1e0d9;
+  --baseline: #c3c2b7;
+  --border: rgba(11, 11, 11, 0.12);
+
+  --series-1: #2a78d6; /* normal      - blue   */
+  --series-2: #eb6834; /* structured  - orange */
+  --series-3: #1baf7a; /* jev         - aqua   */
+  --series-4: #eda100; /* classifier  - yellow */
+
+  --accent: #2a78d6;
+  --accent-soft: #cde2fb;
+
+  --status-good: #0ca30c;
+  --status-warning: #fab219;
+  --status-critical: #d03b3b;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root:where(:not([data-theme='light'])) {
+    color-scheme: dark;
+
+    --page: #0d0d0d;
+    --surface-1: #1a1a19;
+    --surface-2: #222221;
+
+    --text-primary: #ffffff;
+    --text-secondary: #c3c2b7;
+    --muted: #898781;
+
+    --grid: #2c2c2a;
+    --baseline: #383835;
+    --border: rgba(255, 255, 255, 0.12);
+
+    --series-1: #3987e5;
+    --series-2: #d95926;
+    --series-3: #199e70;
+    --series-4: #c98500;
+
+    --accent: #3987e5;
+    --accent-soft: #184f95;
+  }
+}
+
+:root[data-theme='dark'] {
+  color-scheme: dark;
+
+  --page: #0d0d0d;
+  --surface-1: #1a1a19;
+  --surface-2: #222221;
+
+  --text-primary: #ffffff;
+  --text-secondary: #c3c2b7;
+  --muted: #898781;
+
+  --grid: #2c2c2a;
+  --baseline: #383835;
+  --border: rgba(255, 255, 255, 0.12);
+
+  --series-1: #3987e5;
+  --series-2: #d95926;
+  --series-3: #199e70;
+  --series-4: #c98500;
+
+  --accent: #3987e5;
+  --accent-soft: #184f95;
+}
+
+html,
+body,
+#root {
+  height: 100%;
+}
+
+body {
+  background: var(--page);
+  color: var(--text-primary);
+  font-family: system-ui, -apple-system, 'Segoe UI', sans-serif;
+  -webkit-font-smoothing: antialiased;
+}
+
+@layer components {
+  .card {
+    @apply rounded-lg border bg-surface;
+    border-color: var(--border);
+  }
+
+  .btn {
+    @apply inline-flex items-center justify-center gap-2 rounded-md border px-3.5 py-2
+           text-sm font-medium transition-colors disabled:cursor-not-allowed disabled:opacity-45;
+    border-color: var(--border);
+    color: var(--text-primary);
+    background: var(--surface-2);
+  }
+  .btn:hover:not(:disabled) {
+    background: var(--surface-1);
+    border-color: var(--baseline);
+  }
+
+  .btn-primary {
+    background: var(--accent);
+    border-color: var(--accent);
+    color: #ffffff;
+  }
+  .btn-primary:hover:not(:disabled) {
+    background: var(--accent);
+    filter: brightness(1.08);
+    border-color: var(--accent);
+  }
+
+  .chip {
+    @apply inline-flex items-center gap-1.5 rounded-full border px-2.5 py-1 text-xs font-medium;
+    border-color: var(--border);
+    color: var(--text-secondary);
+  }
+
+  .label {
+    @apply text-[11px] font-semibold uppercase tracking-wider;
+    color: var(--muted);
+  }
+
+  .num {
+    font-variant-numeric: tabular-nums;
+  }
+
+  .field {
+    @apply w-full rounded-md border px-3 py-2 text-sm;
+    background: var(--surface-2);
+    border-color: var(--border);
+    color: var(--text-primary);
+  }
+  .field:focus {
+    outline: 2px solid var(--accent);
+    outline-offset: -1px;
+  }
+}
+
+/* Recharts: keep chrome recessive and solid (never dashed). */
+.recharts-cartesian-axis-line,
+.recharts-cartesian-axis-tick-line {
+  stroke: var(--baseline);
+}
+.recharts-cartesian-grid line {
+  stroke: var(--grid);
+}
+.recharts-surface:focus {
+  outline: none;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+  }
+}
+
+@keyframes flow {
+  0% {
+    opacity: 0.25;
+  }
+  50% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0.25;
+  }
+}
+.flow-arrow {
+  animation: flow 2.6s ease-in-out infinite;
+}
